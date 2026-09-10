@@ -17,6 +17,13 @@ class ParkingLot:
 
     def park_car(self, car: Car) -> bool:
 
+        if any(
+            parked_car.license_plate == car.license_plate
+            for parked_car in self.parked_cars
+        ):
+            print(f"{car.license_plate} is already parked")
+            return False
+
         if len(self.parked_cars) >= self.capacity:
             print("---------------------------parking full ---------------------------")
             return False
