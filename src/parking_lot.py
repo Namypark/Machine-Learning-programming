@@ -1,7 +1,7 @@
 class Car:
     def __init__(self, license_plate: str, model: str):
 
-        self.license_plate = license_plate
+        self.license_plate = license_plate.strip().upper()
         self.model = model
 
     def __str__(self):
@@ -10,6 +10,9 @@ class Car:
 
 class ParkingLot:
     def __init__(self, capacity: int):
+
+        if type(self.capacity) is not int or self.capacity <= 0:
+            raise ValueError("Capacity must be a positive integer")
 
         # Attributes managing the parking lot capacity
         self.capacity = capacity
